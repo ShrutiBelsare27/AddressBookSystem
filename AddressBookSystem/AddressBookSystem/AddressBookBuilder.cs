@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AddressBookSystem
+namespace AdressBookSystem
 {
-    public class AddressBookBuilder : IContacts
+    class AdressBookBuilder : IContacts
     {
         public List<Contact> contactList;
-
-        public AddressBookBuilder()
+       
+        public AdressBookBuilder()
         {
             this.contactList = new List<Contact>();
         }
-
-        public void addContact(String firstName, String lastName, String address, String city, String state, String zip, String phoneNumber, String email)
+  
+        /// Adds the contact but contact is not be duplicated
+       
+        public void addContact(string firstName, string lastName, string address, string city, string state, string zip, string phoneNumber, string email)
         {
             bool duplicate = equals(firstName);
             if (!duplicate)
@@ -24,10 +26,12 @@ namespace AddressBookSystem
             }
             else
             {
-                Console.WriteLine("Cannot add duplicate contacts first name");
+                Console.WriteLine("Cannot add duplicate contacts when you give first name same");
             }
         }
-
+      
+        /// Equalses the specified first name for duplicate name.
+       
         private bool equals(string firstName)
         {
             if (this.contactList.Any(e => e.firstName == firstName))
@@ -35,7 +39,9 @@ namespace AddressBookSystem
             else
                 return false;
         }
-
+       
+        /// Edits the contact with the help of first name of person
+       
         public void editContact(string firstName)
         {
             int flag = 1;
@@ -66,7 +72,9 @@ namespace AddressBookSystem
                 Console.WriteLine("Contact not found");
             }
         }
-
+        
+        /// Deletes the contact of person with the help of first name
+        
         public void deleteContact(string firstName)
         {
             int flag = 1;
@@ -85,7 +93,9 @@ namespace AddressBookSystem
                 Console.WriteLine("Contact not found");
             }
         }
-
+        /// <summary>
+        /// Displays the contact of persons
+        /// </summary>
         public void displayContact()
         {
             foreach (Contact contact in contactList)
@@ -100,7 +110,6 @@ namespace AddressBookSystem
                 Console.WriteLine("email = " + contact.email);
             }
         }
-        //search person
         public List<string> findPersons(string place)
         {
             List<string> personFounded = new List<string>();
@@ -120,5 +129,4 @@ namespace AddressBookSystem
             return personFounded;
         }
     }
-
 }
