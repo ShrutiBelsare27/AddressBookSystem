@@ -102,6 +102,29 @@ namespace AddressBookSystem
                 }
             }
         }
+
+        public static void findByCityOrState(Dictionary<string, AddressBookBuilder> adressBookDictionary)
+        {
+            Console.WriteLine("Enter the city or state where you want to find that person = ");
+            string findPlace = Console.ReadLine();
+            foreach (var element in adressBookDictionary)
+            {
+                List<string> listOfPersonsInPlace = element.Value.findPersons(findPlace);
+                if (listOfPersonsInPlace.Count == 0)
+                {
+                    Console.WriteLine("No person in that city/state of adress book  = " + element.Key);
+                }
+                else
+                {
+                    Console.WriteLine("The person in that city/state of adress book = " + element.Key + " = ");
+                    foreach (var names in listOfPersonsInPlace)
+                    {
+                        Console.WriteLine(names);
+                    }
+                }
+            }
+        }
+        // takeInputAndAddToContact methode for taking input from person and condition for input should not be empty
         public static void takeInputAndAddToContact(AddressBookBuilder adressBookBuilder)
         {
             Console.WriteLine("Enter first name = ");
@@ -120,7 +143,15 @@ namespace AddressBookSystem
             String phoneNumber = Console.ReadLine();
             Console.WriteLine("Enter email= ");
             String email = Console.ReadLine();
-            adressBookBuilder.addContact(firstName, lastName, address, city, state, zip, phoneNumber, email);
+            //adressBookBuilder.addContact(firstName, lastName, address, city, state, zip, phoneNumber, email);
+            if ((firstName != "") || (lastName != "") || (address != "") || (city != "") || (state != "") || (zip != "") || (email != "") || (phoneNumber != ""))
+            {
+                adressBookBuilder.addContact(firstName, lastName, address, city, state, zip, phoneNumber, email);
+            }
+            else
+            {
+                Console.WriteLine("Empty string not allowed \n for add contacts please give the input in string");
+            }
         }
     }
 }
