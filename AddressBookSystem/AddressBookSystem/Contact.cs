@@ -14,17 +14,7 @@ namespace AdressBookSystem
         public String zip;
         public String phoneNumber;
         public String email;
-        /// <summary>
-        /// Parameterized constructor initializes a new instance of the contact class <see cref="Contact"/> class.
-        /// </summary>
-        /// <param name="firstName">The first name of person</param>
-        /// <param name="lastName">The last name of person</param>
-        /// <param name="address">The address of person</param>
-        /// <param name="city">The city of person</param>
-        /// <param name="state">The state of person</param>
-        /// <param name="zip">The zip code of person</param>
-        /// <param name="phoneNumber">The phone number of person</param>
-        /// <param name="email">The email.</param>
+       
         public Contact(String firstName, String lastName, String address, String city, String state, String zip, String phoneNumber, String email)
         {
             this.firstName = firstName;

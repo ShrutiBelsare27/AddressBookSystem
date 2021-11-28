@@ -131,6 +131,16 @@ namespace AdressBookSystem
                             adressBookDictionary[sortByZipInAdressBook].sortByZip();
                             break;
                         case 10:
+                            Console.WriteLine("Enter Adress Book Name To Store/write Contacts = ");
+                            string writeInAddressBook = Console.ReadLine();
+                            adressBookDictionary[writeInAddressBook].writeInTxtFile();
+                            break;
+                        case 11:
+                            Console.WriteLine("Enter Adress Book Name To Store/write Contacts = ");
+                            string ReadAddressBook = Console.ReadLine();
+                            adressBookDictionary[ReadAddressBook].readFromTxtFile();
+                            break;
+                        case 12:
                             Environment.Exit(0);
                             break;
                         default:
