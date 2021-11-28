@@ -5,7 +5,12 @@ namespace AdressBookSystem
 {
     class Program
     {
-        
+        /// <summary>
+        /// in main methode we added multiple adress book and display that adress book which we added,passes AdressBookBuilder class
+        /// for add,edit,delete,display contacts of person in both the adress book with the help of dictionary
+        /// as per user requirments
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome To  Book System!");
@@ -42,7 +47,7 @@ namespace AdressBookSystem
                     {
                         Console.WriteLine(k);
                     }
-                    Console.WriteLine("\n 1 for Add Contact \n 2 for Edit Existing Contact \n 3 for delete the person,\n 4 for display,\n 5 for Enter city or state ,\n 6 for exit");
+                    Console.WriteLine("\n 1 for Add Contact \n 2 for Edit Existing Contact \n 3 for delete the person,\n 4 for display,\n 5 for Enter city or state ,\n 6 for Sort,\n 7 for Exit");
                     int choise = Convert.ToInt32(Console.ReadLine());
                     switch (choise)
                     {
@@ -96,16 +101,21 @@ namespace AdressBookSystem
                             String area = Console.ReadLine();
                             if (area.Contains("1"))
                             {
-                                cityDisc = FindByCityOrState(adressBookDictionary, cityDisc);
+                                cityDisc = FindByCityOrState(adressBookDictionary);
                                 displayPersonDisc(cityDisc);
                             }
                             else
                             {
-                                StateDisc = FindByCityOrState(adressBookDictionary, StateDisc);
+                                StateDisc = FindByCityOrState(adressBookDictionary);
                                 displayPersonDisc(StateDisc);
                             }
                             break;
                         case 6:
+                            Console.WriteLine("Enter Adress Book Name To Sort Contacts = ");
+                            string sortContactInAddressBook = Console.ReadLine();
+                            adressBookDictionary[sortContactInAddressBook].sort();
+                            break;
+                        case 7:
                             Environment.Exit(0);
                             break;
                         default:
@@ -119,11 +129,14 @@ namespace AdressBookSystem
                 }
             }
         }
-        
+
+        /// <summary>
         /// findByCityOrState wher we have to ask the user city or state  and print the details in particular adress book
- 
-        public static Dictionary<string, List<string>> FindByCityOrState(Dictionary<string, AdressBookBuilder> adressBookDictionary, Dictionary<string, List<string>> areaDisc)
+        /// </summary>
+        /// <param name="adressBookDictionary"></param>
+        public static Dictionary<string, List<string>> FindByCityOrState(Dictionary<string, AdressBookBuilder> adressBookDictionary)
         {
+            Dictionary<string, List<string>> areaDisc = new Dictionary<string, List<string>>();
             Console.WriteLine("Enter the city or state where you want to find that person = ");
             string findPlace = Console.ReadLine();
             foreach (var element in adressBookDictionary)
@@ -145,19 +158,29 @@ namespace AdressBookSystem
             }
             return areaDisc;
         }
+
+        /// <summary>
+        /// displayPersonDisc for displaying person with area and count the contact
+        /// </summary>
+        /// <param name="areaDisc"></param>
         public static void displayPersonDisc(Dictionary<string, List<string>> areaDisc)
         {
+            int count = 0;
             foreach (var index in areaDisc)
             {
                 foreach (var personName in index.Value)
                 {
+                    count++;
                     Console.WriteLine("personName:-" + personName + "display area:-" + index.Key);
                 }
             }
+            Console.WriteLine("count:-" + count);
         }
-        
+
+        /// <summary>
         /// takeInputAndAddToContact methode for taking input from person and condition for input should not be empty
-   
+        /// </summary>
+        /// <param name="adressBookBuilder"></param>
         public static void takeInputAndAddToContact(AdressBookBuilder adressBookBuilder)
         {
             Console.WriteLine("Enter first name = ");
