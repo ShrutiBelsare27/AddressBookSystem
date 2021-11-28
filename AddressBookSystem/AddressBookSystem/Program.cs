@@ -112,10 +112,25 @@ namespace AdressBookSystem
                             break;
                         case 6:
                             Console.WriteLine("Enter Adress Book Name To Sort Contacts = ");
-                            string sortContactInAddressBook = Console.ReadLine();
-                            adressBookDictionary[sortContactInAddressBook].sort();
+                            string sortByFirstNameInAddressBook = Console.ReadLine();
+                            adressBookDictionary[sortByFirstNameInAddressBook].sortByFirstName();
                             break;
                         case 7:
+                            Console.WriteLine("Enter Adress Book Name To Sort Contacts = ");
+                            string sortByCityInAdressBook = Console.ReadLine();
+                            adressBookDictionary[sortByCityInAdressBook].sortByCity();
+                            break;
+                        case 8:
+                            Console.WriteLine("Enter Adress Book Name To Sort Contacts = ");
+                            string sortByStateInAdressBook = Console.ReadLine();
+                            adressBookDictionary[sortByStateInAdressBook].sortByState();
+                            break;
+                        case 9:
+                            Console.WriteLine("Enter Adress Book Name To Sort Contacts = ");
+                            string sortByZipInAdressBook = Console.ReadLine();
+                            adressBookDictionary[sortByZipInAdressBook].sortByZip();
+                            break;
+                        case 10:
                             Environment.Exit(0);
                             break;
                         default:
@@ -130,10 +145,9 @@ namespace AdressBookSystem
             }
         }
 
-        /// <summary>
+       
         /// findByCityOrState wher we have to ask the user city or state  and print the details in particular adress book
-        /// </summary>
-        /// <param name="adressBookDictionary"></param>
+       
         public static Dictionary<string, List<string>> FindByCityOrState(Dictionary<string, AdressBookBuilder> adressBookDictionary)
         {
             Dictionary<string, List<string>> areaDisc = new Dictionary<string, List<string>>();
@@ -159,10 +173,9 @@ namespace AdressBookSystem
             return areaDisc;
         }
 
-        /// <summary>
+       
         /// displayPersonDisc for displaying person with area and count the contact
-        /// </summary>
-        /// <param name="areaDisc"></param>
+       
         public static void displayPersonDisc(Dictionary<string, List<string>> areaDisc)
         {
             int count = 0;
@@ -177,10 +190,9 @@ namespace AdressBookSystem
             Console.WriteLine("count:-" + count);
         }
 
-        /// <summary>
+       
         /// takeInputAndAddToContact methode for taking input from person and condition for input should not be empty
-        /// </summary>
-        /// <param name="adressBookBuilder"></param>
+       
         public static void takeInputAndAddToContact(AdressBookBuilder adressBookBuilder)
         {
             Console.WriteLine("Enter first name = ");

@@ -9,25 +9,15 @@ namespace AdressBookSystem
     {
         public List<Contact> contactList;
 
-        /// <summary>
-        /// Initializes a new instance of the list <see cref="AdressBookBuilder"/> class.
-        /// </summary>
+        
         public AdressBookBuilder()
         {
             this.contactList = new List<Contact>();
         }
 
-        /// <summary>
+        
         /// Adds the contact but contact is not be duplicated
-        /// </summary>
-        /// <param name="firstName">The first name of person</param>
-        /// <param name="lastName">The last name of person</param>
-        /// <param name="address">The address of person</param>
-        /// <param name="city">The city of person</param>
-        /// <param name="state">The state of person</param>
-        /// <param name="zip">The zip code of person</param>
-        /// <param name="phoneNumber">The phone number of person</param>
-        /// <param name="email">The email of person</param>
+       
         public void addContact(string firstName, string lastName, string address, string city, string state, string zip, string phoneNumber, string email)
         {
             bool duplicate = equals(firstName);
@@ -42,11 +32,9 @@ namespace AdressBookSystem
             }
         }
 
-        /// <summary>
+        
         /// Equalses the specified first name for duplicate name.
-        /// </summary>
-        /// <param name="firstName">The first name.</param>
-        /// <returns></returns>
+       
         private bool equals(string firstName)
         {
             if (this.contactList.Any(e => e.firstName == firstName))
@@ -55,10 +43,9 @@ namespace AdressBookSystem
                 return false;
         }
 
-        /// <summary>
+       
         /// Edits the contact with the help of first name of person
-        /// </summary>
-        /// <param name="firstName">The first nameof person</param>
+        
         public void editContact(string firstName)
         {
             int flag = 1;
@@ -90,10 +77,6 @@ namespace AdressBookSystem
             }
         }
 
-        /// <summary>
-        /// Deletes the contact of person with the help of first name
-        /// </summary>
-        /// <param name="firstName">The first name of person</param>
         public void deleteContact(string firstName)
         {
             int flag = 1;
@@ -113,9 +96,7 @@ namespace AdressBookSystem
             }
         }
 
-        /// <summary>
-        /// Displays the contact of persons
-        /// </summary>
+       
         public void displayContact()
         {
             foreach (Contact contact in contactList)
@@ -155,10 +136,26 @@ namespace AdressBookSystem
             return personFounded;
         }
 
-        /// <summary>
-        /// Sort methode for sort entites in adress book.
-        /// </summary>
-        public void sort()
+        /* 
+         /// Sort methode for sort entites in adress book.
+        
+         public void sort()
+         {
+             List<string> sortList = new List<string>();
+             foreach (Contact contacts in contactList)
+             {
+                 string sort = contacts.ToString();
+                 sortList.Add(sort);
+             }
+             sortList.Sort();
+             foreach (string sort in sortList)
+             {
+                 Console.WriteLine(sort);
+             }
+         }*/
+
+        
+        public void sortByFirstName()
         {
             List<string> sortList = new List<string>();
             foreach (Contact contacts in contactList)
@@ -170,6 +167,39 @@ namespace AdressBookSystem
             foreach (string sort in sortList)
             {
                 Console.WriteLine(sort);
+            }
+        }
+
+       
+        public void sortByCity()
+        {
+            contactList.Sort(new Comparison<Contact>((a, b) => string.Compare(a.city, b.city)));
+            Console.WriteLine("Contacts after sorting By City = ");
+            foreach (Contact contact in contactList)
+            {
+                Console.WriteLine("\n FirstName = " + contact.firstName + "\n Last Name = " + contact.lastName + "\n Address = " + contact.address + "\n City = " + contact.city + "\n State = " + contact.state + "\n Zip = " + contact.zip + "\n Phone Number = " + contact.phoneNumber + "\n Email = " + contact.email);
+            }
+        }
+
+       
+        public void sortByState()
+        {
+            contactList.Sort(new Comparison<Contact>((a, b) => string.Compare(a.state, b.state)));
+            Console.WriteLine("Contacts after sorting By State = ");
+            foreach (Contact contact in contactList)
+            {
+                Console.WriteLine("\n FirstName = " + contact.firstName + "\n Last Name = " + contact.lastName + "\n Address = " + contact.address + "\n City = " + contact.city + "\n State = " + contact.state + "\n Zip = " + contact.zip + "\n Phone Number = " + contact.phoneNumber + "\n Email = " + contact.email);
+            }
+        }
+
+        
+        public void sortByZip()
+        {
+            contactList.Sort(new Comparison<Contact>((a, b) => string.Compare(a.zip, b.zip)));
+            Console.WriteLine("Contacts after sorting By Zip = ");
+            foreach (Contact contact in contactList)
+            {
+                Console.WriteLine("\n FirstName = " + contact.firstName + "\n Last Name = " + contact.lastName + "\n Address = " + contact.address + "\n City = " + contact.city + "\n State = " + contact.state + "\n Zip = " + contact.zip + "\n Phone Number = " + contact.phoneNumber + "\n Email = " + contact.email);
             }
         }
     }
