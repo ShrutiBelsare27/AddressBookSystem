@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using AdressBookSystem;
+using Newtonsoft.Json;
 
 namespace AddressBookSystem
 {
@@ -10,6 +11,7 @@ namespace AddressBookSystem
     {
         public static string textFilePath = @"E:\.net\Day9Assg\AddressBookSystem\AddressBookSystem\Contact.txt";
         public static string csvFilePath = @"E:\.net\Day9Assg\AddressBookSystem\AddressBookSystem\Contact.csv";
+        public static string jsonFilePath = @"E:\.net\Day9Assg\AddressBookSystem\AddressBookSystem\Contact.json";
 
 
 
@@ -91,8 +93,48 @@ namespace AddressBookSystem
             }
         }
 
-       
+        public static void writeIntoJSONFile(List<Contact> contacts)
+        {
+            if (File.Exists(jsonFilePath))
+            {
+                JsonSerializer jsonSerializer = new JsonSerializer();
+                using (StreamWriter streamWriter = new StreamWriter(jsonFilePath))
+                using (JsonWriter writer = new JsonTextWriter(streamWriter))
+                {
+                    jsonSerializer.Serialize(writer, contacts);
+                }
+                Console.WriteLine("SucessFully write into JSON file");
+            }
+            else
+            {
+                Console.WriteLine("No File Beacuse Of Wrong Path Or File Name");
+            }
+        }
 
        
+        public static void readFromJSONFile()
+        {
+            if (File.Exists(jsonFilePath))
+            {
+                List<Contact> contacts = JsonConvert.DeserializeObject<List<Contact>>(File.ReadAllText(jsonFilePath));
+                foreach (Contact contact in contacts)
+                {
+                    Console.Write("\n" + contact.firstName);
+                    Console.Write("\n" + contact.lastName);
+                    Console.Write("\n" + contact.address);
+                    Console.Write("\n" + contact.city);
+                    Console.Write("\n" + contact.state);
+                    Console.Write("\n" + contact.zip);
+                    Console.Write("\n" + contact.phoneNumber);
+                    Console.Write("\n" + contact.email);
+                }
+            }
+            else
+            {
+                Console.WriteLine("No File Beacuse Of Wrong Path Or File Name");
+            }
+        }
+
+
     }
 }

@@ -146,6 +146,16 @@ namespace AdressBookSystem
                             adressBookDictionary[ReadFromCSVAddressBook].readFromCSVFile();
                             break;
                         case 14:
+                            Console.WriteLine("Enter Adress Book Name To Store/write Contacts In JSON File = ");
+                            string writeInJSONAddressBook = Console.ReadLine();
+                            adressBookDictionary[writeInJSONAddressBook].writeInJSONFile();
+                            break;
+                        case 15:
+                            Console.WriteLine("Enter Adress Book Name To Read Contacts From JSON File = ");
+                            string ReadFromJSONAddressBook = Console.ReadLine();
+                            adressBookDictionary[ReadFromJSONAddressBook].readFromJSONFile();
+                            break;
+                        case 16:
                             Environment.Exit(0);
                             break;
                         default:

@@ -198,22 +198,27 @@ namespace AdressBookSystem
         {
             FileReadWrite.readFromTxtFile();
         }
-        /// <summary>
-        /// Writes the in text file.
-        /// </summary>
+        
         public void writeInCSVFile()
         {
             FileReadWrite.writeIntoCsvFile(contactList);
         }
 
-        /// <summary>
-        /// Reads from text file.
-        /// </summary>
+        
         public void readFromCSVFile()
         {
             FileReadWrite.readFromCSVFile();
         }
 
-        
+        public void writeInJSONFile()
+        {
+            FileReadWrite.writeIntoJSONFile(contactList);
+        }
+
+       
+        public void readFromJSONFile()
+        {
+            FileReadWrite.readFromJSONFile();
+        }
     }
 }

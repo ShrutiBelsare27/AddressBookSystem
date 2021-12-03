@@ -1,0 +1,32 @@
+[
+  {
+    "firstName": "shruti",
+    "lastName": "belsare",
+    "address": "amrvati",
+    "city": "amt",
+    "state": "maha",
+    "zip": "444601",
+    "phoneNumber": "8149713160",
+    "email": "belsare@gmail.com"
+  },
+  {
+    "firstName": "sh",
+    "lastName": "pawar",
+    "address": "mataji negar",
+    "city": "pune",
+    "state": "maha",
+    "zip": "411052",
+    "phoneNumber": "97918728",
+    "email": "abc@gmail.com"
+  },
+  {
+    "firstName": "rani",
+    "lastName": "joshi",
+    "address": "shivaji chowk",
+    "city": "nagpur",
+    "state": "maha",
+    "zip": "413256",
+    "phoneNumber": "92739393",
+    "email": "dndjk@gmail.com"
+  }
+]

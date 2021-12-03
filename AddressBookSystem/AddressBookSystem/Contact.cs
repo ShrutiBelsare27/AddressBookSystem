@@ -26,10 +26,7 @@ namespace AdressBookSystem
             this.phoneNumber = phoneNumber;
             this.email = email;
         }
-        /// <summary>
-        /// To the string for return contacts details
-        /// </summary>
-        /// <returns></returns>
+       
         public string toString()
         {
             return "first Name=" + firstName + ",last name=" + lastName + ",address="
