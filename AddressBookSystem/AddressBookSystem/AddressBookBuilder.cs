@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AdressBookSystem
 {
-    class AdressBookBuilder : IContacts
+    public class AdressBookBuilder : IContacts
     {
         public List<Contact> contactList;
 
@@ -113,11 +113,10 @@ namespace AdressBookSystem
             }
         }
 
-        /// <summary>
-        /// Find  the persons by place ie state or city.
-        /// </summary>
-        /// <param name="place">The place.</param>
-        /// <returns>person information</returns>
+    
+        // Find  the persons by place ie state or city.
+       
+        // <returns>person information</returns>
         public List<string> findPersons(string place)
         {
             List<string> personFounded = new List<string>();
@@ -137,24 +136,7 @@ namespace AdressBookSystem
             return personFounded;
         }
 
-        /* 
-         /// Sort methode for sort entites in adress book.
         
-         public void sort()
-         {
-             List<string> sortList = new List<string>();
-             foreach (Contact contacts in contactList)
-             {
-                 string sort = contacts.ToString();
-                 sortList.Add(sort);
-             }
-             sortList.Sort();
-             foreach (string sort in sortList)
-             {
-                 Console.WriteLine(sort);
-             }
-         }*/
-
         
         public void sortByFirstName()
         {
@@ -206,7 +188,7 @@ namespace AdressBookSystem
 
         public void writeInTxtFile()
         {
-            FileReadWrite.WriteFile(contactList);
+            FileReadWrite.writeInTxtFile(contactList);
         }
 
         /// <summary>
@@ -214,7 +196,24 @@ namespace AdressBookSystem
         /// </summary>
         public void readFromTxtFile()
         {
-            FileReadWrite.readFile();
+            FileReadWrite.readFromTxtFile();
         }
+        /// <summary>
+        /// Writes the in text file.
+        /// </summary>
+        public void writeInCSVFile()
+        {
+            FileReadWrite.writeIntoCsvFile(contactList);
+        }
+
+        /// <summary>
+        /// Reads from text file.
+        /// </summary>
+        public void readFromCSVFile()
+        {
+            FileReadWrite.readFromCSVFile();
+        }
+
+        
     }
 }
