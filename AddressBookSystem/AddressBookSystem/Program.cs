@@ -9,6 +9,10 @@ namespace AdressBookSystem
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome To  Book System!");
+            Contact contact = new Contact();
+            AdressBookBuilder add = new AdressBookBuilder();
+            add.checkConnection();
+            
             Dictionary<string, AdressBookBuilder> adressBookDictionary = new Dictionary<string, AdressBookBuilder>();
             Dictionary<string, List<string>> cityDisc = new Dictionary<string, List<string>>();
             Dictionary<string, List<string>> StateDisc = new Dictionary<string, List<string>>();

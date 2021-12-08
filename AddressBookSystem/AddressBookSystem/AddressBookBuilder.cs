@@ -1,4 +1,5 @@
 ﻿using AddressBookSystem;
+using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,25 @@ namespace AdressBookSystem
 {
     public class AdressBookBuilder : IContacts
     {
+
+
+        public static string connectionString = "Server = localhost; Database=address_book_services; Uid=root;Pwd=root;";
+        MySqlConnection connection = new MySqlConnection(connectionString);
+        public void checkConnection()
+        {
+            try
+            {
+                this.connection.Open();
+                Console.WriteLine("connection established");
+                this.connection.Close();
+            }
+            catch
+            {
+                Console.WriteLine("not established");
+            }
+        }
+
+
         public List<Contact> contactList;
 
         
